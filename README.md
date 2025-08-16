@@ -1,9 +1,6 @@
 # Emu8086_programs_for-lab
 codes for all programs in syllabus
 
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
-# give detailed codes which include a DOS interface for every program and also give comments to each and every line of code.
 
 Below, I'll provide detailed Assembly Language Programs (ALPs) for all the core experiments from your lab syllabus (covering 8086 and 8051 topics as shown in the attached image). Each program includes a DOS interface for user interaction (using INT 21H functions for input/output, such as prompting for inputs and displaying results). I've expanded them with full code, including data segments, stack setup, and error handling where relevant. Every single line has a comment explaining its purpose.
 
