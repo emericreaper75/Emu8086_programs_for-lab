@@ -2,6 +2,12 @@
 
 Assembly experiments organized according to the laboratory list.
 
+This Repo only has the program codes as per the syllabus in JNTUA CEA R23 regulation
+
+> **Microprocessor 8086 Codes suggested to run on _emu8086_ software**
+
+> **Microcontroller 8051 codes best suggested to run on _Keil uvision_ software**
+
 ## Microprocessor 8086
 
 ### 1. Programs for 16 Bit Arithmetic Operations (Using various addressing modes)
