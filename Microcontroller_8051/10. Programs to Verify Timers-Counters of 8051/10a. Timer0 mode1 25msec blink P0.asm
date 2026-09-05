@@ -1,15 +1,23 @@
-; ## 8051 ALP: Verify Timers and Counters with Delay
-ORG 0000H             ; Origin
-MAIN:                 ; Main
-    MOV TMOD, #01H    ; Timer0 mode1
-    MOV TH0, #0FCH    ; High byte for delay (e.g., 1ms at 12MHz)
-    MOV TL0, #18H     ; Low byte
-    SETB TR0          ; Start timer
-WAIT:                 ; Wait label
-    JNB TF0, WAIT     ; Wait for overflow
-    CLR TR0           ; Stop
-    CLR TF0           ; Clear flag
+; ---------------------------------------------------------
+; 25 ms delay using Timer0 in Mode 1 (16-bit timer)
+; Blinks all pins of Port 0
+; Assumes 12 MHz crystal -> 1 machine cycle = 1 us
+; Count = 65536 - 25000 = 40536 = 9E58H -> TH0=9EH, TL0=58H
+; ---------------------------------------------------------
+ORG 0000H                ; reset vector: execution starts here
+    LJMP MAIN              ; jump to MAIN, skipping interrupt vector area
 
-    ; Repeat for mode2 or counter (use ET0, etc.)
-    SJMP $            ; Loop
-END                   ; End
+ORG 0030H                ; main code placed after interrupt vector table
+MAIN:                     ; label: start of main program
+    MOV TMOD,#01H           ; TMOD=01H -> Timer0 selected, Mode 1 (16-bit)
+AGAIN:                     ; label: start of repeating blink loop
+    MOV TH0,#09EH            ; load high byte of the 16-bit count (9EH)
+    MOV TL0,#058H            ; load low byte of the 16-bit count (58H)
+    SETB TR0                 ; start Timer0 running
+WAIT:                       ; label: wait for timer overflow
+    JNB TF0,WAIT              ; loop here while overflow flag TF0 is still 0
+    CLR TR0                  ; stop Timer0 once it has overflowed
+    CLR TF0                  ; clear overflow flag for the next round
+    CPL P0                   ; complement (toggle) all 8 pins of Port 0
+    SJMP AGAIN                ; repeat forever, creating a blinking effect
+    END                      ; end of source file
