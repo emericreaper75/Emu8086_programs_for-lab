@@ -1,10 +1,12 @@
 .MODEL SMALL          ; Model
 .STACK 100H           ; Stack
+
 .DATA                 ; Data
 MSG DB 'Enter number (hex): $'  ; Prompt
 MSG_ODD DB 0DH,0AH,'Odd$ '     ; Odd msg
 MSG_EVEN DB 0DH,0AH,'Even$ '   ; Even msg
 NUM DW ?              ; Number
+
 .CODE                 ; Code
 MAIN PROC             ; Main
     MOV AX, @DATA     ; Init
@@ -30,5 +32,6 @@ DISP:                 ; Display
     MOV AH, 4CH       ; Exit
     INT 21H           ; Call
 MAIN ENDP             ; End
+
 ; READ_NUM from first
 END MAIN              ; End

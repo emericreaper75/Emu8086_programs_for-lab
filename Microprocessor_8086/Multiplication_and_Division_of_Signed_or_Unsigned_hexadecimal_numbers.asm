@@ -1,5 +1,6 @@
 .MODEL SMALL          ; Define memory model as small
 .STACK 100H           ; Allocate stack
+
 .DATA                 ; Data segment
 MSG1 DB 'Enter first number (hex): $'  ; Prompt for first
 MSG2 DB 0DH,0AH,'Enter second number (hex): $'  ; Prompt for second
@@ -10,6 +11,7 @@ NUM2 DW ?             ; Second number
 RES_MUL DD ?          ; 32-bit mul result (DX:AX)
 QUOT DW ?             ; Division quotient
 REMAIN DW ?           ; Division remainder
+
 .CODE                 ; Code segment
 MAIN PROC             ; Main procedure
     MOV AX, @DATA     ; Initialize DS

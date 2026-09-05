@@ -1,10 +1,12 @@
 .MODEL SMALL          ; Model
 .STACK 100H           ; Stack
+
 .DATA                 ; Data
 MSG DB 'Enter number (hex, signed): $'  ; Prompt
 MSG_POS DB 0DH,0AH,'Positive$ '  ; Positive msg
 MSG_NEG DB 0DH,0AH,'Negative$ '  ; Negative msg
 NUM DW ?              ; Number
+
 .CODE                 ; Code
 MAIN PROC             ; Main
     MOV AX, @DATA     ; Init DS
