@@ -1,6 +1,7 @@
 ; ## 8086 ALP: Find Square, Cube, and Factorial of a Given Number
 .MODEL SMALL          ; Small model
 .STACK 100H           ; Stack allocation
+
 .DATA                 ; Data
 MSG DB 'Enter number (0-9 decimal): $'  ; Prompt
 MSG_SQ DB 0DH,0AH,'Square: $'  ; Square message
@@ -10,6 +11,7 @@ NUM DB ?              ; Input number
 SQUARE DW ?           ; Square result
 CUBE DW ?             ; Cube result
 FACT DW 1             ; Factorial result (init 1)
+
 .CODE                 ; Code
 MAIN PROC             ; Main
     MOV AX, @DATA     ; Init DS
