@@ -1,3 +1,4 @@
+; ## 8086 ALP: Find Square, Cube, and Factorial of a Given Number
 .MODEL SMALL          ; Small model
 .STACK 100H           ; Stack allocation
 .DATA                 ; Data

@@ -1,3 +1,4 @@
+; ## 8086 ALP: Check if a Number is Odd or Even
 .MODEL SMALL          ; Model
 .STACK 100H           ; Stack
 .DATA                 ; Data
